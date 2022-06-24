@@ -15,9 +15,7 @@ class Producto {
     precioFinal() {
         return parseFloat((this.precio * 1.21).toFixed(2));
     }
-    toString() {
-        return `ID: ${this.id}\n Nombre: ${this.nombre}\n Precio: $${this.precioFinal()}\n Descripcion: ${this.descripcion}\n Categoria: ${this.categoria}\n Stock: ${this.stock}`;
-    }
+
 }
 function listarProductos() {
     document.querySelector("tbody").innerHTML = '';
@@ -108,7 +106,13 @@ function cargarProductos() {
     for (const producto of productos) {
         const li = document.createElement("li");
         li.className = "list-group-item";
-        li.innerText = producto;
+        li.innerText = `
+        ID: ${producto.id}\n
+        Nombre: ${producto.nombre}\n
+        Precio: $${producto.precio}\n
+        Descipción: ${producto.descripcion}\n
+        Categoria: ${producto.categoria}\n
+        Stock: ${producto.stock}`;
         li.id = producto.nombre + "Prod";
         li.addEventListener("click", () => {
             agregarAlCarrito(`${producto}`);
@@ -122,7 +126,7 @@ function agregarAlCarrito(prod) {
     const li = document.createElement("li");
     li.className = "list-group-item";
     li.innerText = prod;
-    li.id = "enCarrito";
+    li.id = prod.id + "enCarrito";
     li.addEventListener("dblclick", () => {
         removerDelCarrito(`${li.id}`);
     })
