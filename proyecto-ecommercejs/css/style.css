@@ -3,6 +3,12 @@
     margin: 0;
 }
 
+html {
+    background: url(/proyecto-ecommercejs/img/bg/Animated\ Shape.svg)center center no-repeat fixed;
+
+
+}
+
 .form-control {
     position: relative;
     margin: 20px 0 40px;

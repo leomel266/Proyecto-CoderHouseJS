@@ -4,7 +4,7 @@ const listadoProductos = document.getElementById('listadoProductos');
 class Producto {
     static contadorProducto = 0;
     constructor(id, nombre, precio, descripcion, categoria, stock) {
-        this.id = ++Producto.contadorProducto;
+        this.id = Producto.contadorProducto++;
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
@@ -113,7 +113,7 @@ function cargarProductos() {
         Descipción: ${producto.descripcion}\n
         Categoria: ${producto.categoria}\n
         Stock: ${producto.stock}`;
-        li.id = producto.nombre + "Prod";
+        li.id = producto.id + "Prod";
         li.addEventListener("click", () => {
             agregarAlCarrito(`${producto}`);
         })
@@ -126,7 +126,7 @@ function agregarAlCarrito(prod) {
     const li = document.createElement("li");
     li.className = "list-group-item";
     li.innerText = prod;
-    li.id = prod.id + "enCarrito";
+    li.id = prod + "enCarrito";
     li.addEventListener("dblclick", () => {
         removerDelCarrito(`${li.id}`);
     })
@@ -145,6 +145,13 @@ function calcularProductos() {
     console.log(total)
 
 }
+
+const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) }
+for (const producto of productos) {
+    guardarLocal(producto.id, JSON.stringify(producto))
+    console.log(producto)
+}
+
 cargarProductos();
 
 
