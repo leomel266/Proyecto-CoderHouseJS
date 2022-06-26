@@ -17,33 +17,6 @@ class Producto {
     }
 
 }
-function listarProductos() {
-    document.querySelector("tbody").innerHTML = '';
-    productos.forEach((producto) => {
-        const fila = `<tr>
-                        <td>${producto.id}</td>
-                        <td>- ${producto.nombre}</td>
-                        <td>$${producto.precioFinal()}</td>
-                        <td>${producto.descripcion}</td>
-                        <td>${producto.categoria}</td>
-                        <td> ${producto.stock}</td>
-                    </tr>`
-        document.querySelector("tbody").innerHTML += fila;
-    })
-}
-
-// funcion sin usar DOM
-// function agregarProducto() {
-//     let id = 0;
-//     let nombre = prompt("Ingrese el nombre del producto");
-//     let precio = parseInt(prompt("Ingrese el precio del producto"));
-//     let descripcion = prompt("Ingrese la descripcion del producto");
-//     let categoria = prompt("Ingrese la categoria del producto");
-//     let stock = parseInt(prompt("Ingrese el stock del producto"));
-//     productos.push(new Producto(id, nombre, precio, descripcion, categoria, stock));
-// }
-// agregarProducto();
-
 
 let producto1 = productos.push(new Producto(0, 'PAPAS', 150, 'Papas de la mejor calidad', 'alimentos', 10));
 
@@ -54,6 +27,21 @@ function generarProductos() {
     productos.push(new Producto(0, 'CUCHILLOS', 40, 'Tramontina', 'Cocina', 10));
     productos.push(new Producto(0, 'PINTURA ROJA', 50, 'ColorShop', 'Industria', 7));
 
+}
+
+function listarProductos() {
+    document.querySelector("tbody").innerHTML = '';
+    productos.forEach((producto) => {
+        const fila = `<tr>
+                        <td>${producto.id}</td>
+                        <td>${producto.nombre}</td>
+                        <td>$${producto.precioFinal()}</td>
+                        <td>${producto.descripcion}</td>
+                        <td>${producto.categoria}</td>
+                        <td>${producto.stock}</td>
+                    </tr>`
+        document.querySelector("tbody").innerHTML += fila;
+    })
 }
 generarProductos();
 
@@ -72,14 +60,7 @@ generarProductos();
 // buscarProducto();
 
 
-function agregarProductos() {
-    for (let producto of productos) {
-        console.log(producto.toString());
-        listarProductos();
-        //document.write(producto.toString() + "<br>");
-    }
 
-}
 
 // Funcion map para proyectar el precio del producto
 function proyectarIncremento(porc) {
@@ -115,7 +96,7 @@ function cargarProductos() {
         Stock: ${producto.stock}`;
         li.id = producto.id + "Prod";
         li.addEventListener("click", () => {
-            agregarAlCarrito(`${producto}`);
+            agregarAlCarrito(producto);
         })
         listadoProductos.append(li);
     }
@@ -125,16 +106,24 @@ function agregarAlCarrito(prod) {
     carrito.push(prod)
     const li = document.createElement("li");
     li.className = "list-group-item";
-    li.innerText = prod;
-    li.id = prod + "enCarrito";
+    li.innerText = `
+    ID: ${prod.id}\n
+    Nombre: ${prod.nombre}\n
+    Precio: $${prod.precio}\n
+    Descripción: ${prod.descripcion}\n
+    Categoria: ${prod.categoria}\n
+    Stock: ${prod.stock}
+    `;
+    li.id = `${prod.id}enCarrito`
     li.addEventListener("dblclick", () => {
         removerDelCarrito(`${li.id}`);
     })
     listaCarrito.append(li);
+
 }
 
 function removerDelCarrito(prod) {
-    const productoARemover = document.querySelector(`#enCarrito`);
+    const productoARemover = document.querySelector(`#${li.id}enCarrito`);
     debugger
     productoARemover.remove();
 

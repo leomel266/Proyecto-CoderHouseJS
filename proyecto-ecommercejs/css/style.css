@@ -3,7 +3,7 @@
     margin: 0;
 }
 
-html {
+body {
     background: url(/proyecto-ecommercejs/img/bg/Animated\ Shape.svg)center center no-repeat fixed;
 
 
@@ -30,6 +30,7 @@ html {
         "widget-1 widget-2 sidebar"
         "footer footer footer";
     font-family: 'Roboto', sans-serif;
+
 }
 
 .container>div,
@@ -40,6 +41,8 @@ html {
     background: #fff;
     padding: 20px;
     border-radius: 4px;
+    background-color: #92a8d1;
+
 }
 
 .container .header {
@@ -47,8 +50,21 @@ html {
 
 }
 
+.header {
+    text-align: center;
+}
+
 .container .contenido {
     grid-area: contenido;
+}
+
+.contenido {
+    padding: 10px;
+    margin: 30px;
+}
+
+.table {
+    overflow: scroll;
 }
 
 .container .sidebar {
@@ -60,6 +76,7 @@ html {
     min-height: 100px;
     grid-area: sidebar;
     background-color: aliceblue;
+    overflow: scroll;
 }
 
 .container .widget-1,

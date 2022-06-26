@@ -5,11 +5,6 @@ const listaCarrito = document.getElementById("listadoCarrito");
 
 
 
-function generarCarrito() {
-    carrito.push(productos)
-
-}
-generarCarrito()
 
 
 
