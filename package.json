@@ -1,0 +1,21 @@
+{
+  "name": "proyecto-coderhousejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Shadowrunner11/Proyecto-CoderHouseJS.git",
+  "author": "Shadowrunner11 <matematicadivina1@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "esbuild": "^0.14.47",
+    "eslint": "^8.18.0"
+  },
+  "dependencies": {
+    "dexie": "^3.2.2",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "dev":"node ./config/esbuild.js",
+    "build":"node ./config/esbuild.prod.js && rm -rf ./js"
+  }
+}
